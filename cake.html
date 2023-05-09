@@ -1,0 +1,313 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    body {
+        background-color: paleturquoise;
+    }
+
+    img {
+        max-width: 100%;
+        transition: all .5s;
+        cursor: pointer;
+    }
+
+    .card-img {
+        overflow: hidden;
+    }
+
+    img:hover {
+        transform: scale(1.1);
+    }
+
+    .box {
+        justify-content: center;
+        align-items: center;
+        margin-top: 100px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="row mt-5 mb-5 justify-content-center">
+            <div class="col-lg-2">
+                <button onclick="viewAllRecord()" class="btn fs-4 btn-primary">All</button>
+            </div>
+            <div class="col-lg-2">
+                <button onclick="chocolateData()" class="btn fs-4 btn-primary">chocolate cake</button>
+            </div>
+            <div class="col-lg-2">
+                <button onclick="icecreamData()" class="btn fs-4 btn-primary">icecream cake</button>
+            </div>
+            <div class="col-lg-2">
+                <button onclick="birthdayData()" class="btn fs-4 btn-primary">birthday cake</button>
+            </div>
+            <div class="col-lg-2">
+                <button onclick="weddingData()" class="btn fs-4 btn-primary">wedding cake</button>
+            </div>
+
+        </div>
+
+        <hr />
+        <br />
+
+        <div class="row" id="allrecord">
+
+        </div>
+
+    </div>
+</body>
+
+<script type="text/javascript">
+
+    let data = [
+        {
+            name: "classic chocolate cake",
+            price: 400,
+            image: "https://www.labonelfinebaking.shop/wp-content/uploads/2021/02/CLASSIC-CHOCOLATE-CAKE.jpg",
+            category: "chocolate"
+        },
+        {
+            name: "cookie icecream cake",
+            price: 900,
+            image: "https://www.oliveandmango.com/images/uploads/2018_08_15_chocolate_oreo_cookie_ice_cream_cake_1.jpg",
+            category: "icecream"
+        },
+        {
+            name: "dubble chocolate cake",
+            price: 700,
+            image: "https://www.lifeloveandsugar.com/wp-content/uploads/2014/08/Best-Moist-Chocolate-Cake1-1.jpg",
+            category: "chocolate"
+        },
+        {
+            name: "flower wedding cake",
+            price: 900,
+            image: "https://images.unsplash.com/photo-1604702433171-33756f3f3825?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8d2VkZGluZyUyMGNha2V8ZW58MHx8MHx8&w=1000&q=80",
+            category: "wedding"
+        },
+        {
+            name: "melted icecream theme cake ",
+            price: 670,
+            image: "https://liliyum.com/cdn/shop/products/Meltedicecreamcake_2400x.jpg?v=1632904409",
+            category: "icecream"
+        },
+        {
+            name: "chocolate cake",
+            price: 550,
+            image: "https://assets.winni.in/product/primary/2022/8/72741.png?dpr=1&w=500",
+            category: "chocolate"
+        },
+        {
+            name: "fruit icecream cake",
+            price: 800,
+            image: "https://bakewithshivesh.com/wp-content/uploads/2021/04/IMG_8765-scaled.jpg",
+            category: "icecream"
+        },
+        {
+            name: "chocolate birthday cake",
+            price: 550,
+            image: "https://assets.winni.in/product/primary/2022/8/72732.png?dpr=1&w=500",
+            category: "birthday"
+        },
+        {
+            name: "chocolate candy cake",
+            price: 650,
+            image: "https://www.blessthismessplease.com/wp-content/uploads/2021/07/chocolate-candy-cake-3.jpg",
+            category: "chocolate"
+        },
+        {
+            name: "rose birthday cake",
+            price: 620,
+            image: "https://media.karousell.com/media/photos/products/2022/8/13/birthday_cake_for_lovely_wife_1660411964_2afe9dcf_progressive",
+            category: "birthday"
+        },
+        {
+            name: "neapolitan ice cream cake",
+            price: 750,
+            image: "https://www.sainsburysmagazine.co.uk/uploads/media/1800x1800/04/5804-NEOPOLITAN-ICECREAM-CAKE.jpg?v=1-0",
+            category: "icecream"
+        },
+        {
+            name: "barby birthday cake",
+            price: 900,
+            image: "https://www.yummycake.co.in/wp-content/uploads/2017/02/Beautiful-Birthday-Cakes.jpg",
+            category: "birthday"
+        },
+        {
+            name: "taddy birthday cake",
+            price: 790,
+            image: "https://faridabadcake.com/wp-content/uploads/2022/09/teddy-bear-birthday-cake.png",
+            category: "birthday"
+        },
+        {
+            name: "rose wedding cake",
+            price: 1200,
+            image: "https://justcakespune.com/wp-content/uploads/2021/03/wedding-cake-1.png",
+            category: "wedding"
+        },
+        {
+            name: "cup icecream cake",
+            price: 850,
+            image: "https://bakewithshivesh.com/wp-content/uploads/2021/05/IMG_9096-scaled.jpg",
+            category: "icecream"
+        },
+        {
+            name: "best wedding cake",
+            price: 1500,
+            image: "https://www.fearlessdining.com/wp-content/uploads/2022/04/wedding-cake-with-fresh-flowers.jpg",
+            category: "wedding"
+        },
+        {
+            name: "simple wedding cake",
+            price: 1000,
+            image: "https://assets.winni.in/product/primary/2022/10/76498.jpeg?dpr=2&w=220",
+            category: "wedding"
+        },
+        {
+            name: "happy birthday cake",
+            price: 400,
+            image: "https://www.mynameart.com/pics/happy-birthday-cake-for-whatsapp-with-name.jpg",
+            category: "birthday"
+        },
+        {
+            name: "mint chocolate cake",
+            price: 600,
+            image: "https://www.indiagiftskart.com/upload/productimg/20201230105504_large_belgium-chocolate-cake.webp",
+            category: "chocolate"
+        },
+        {
+            name: "floral wedding cake",
+            price: 980,
+            image: "https://liliyum.com/cdn/shop/products/Wedding_Flower-Cake-1_2400x.jpg?v=1589979181",
+            category: "wedding"
+        },
+    ];
+
+    viewAllRecord();
+    function viewAllRecord() {
+        let tbl = "";
+        data.map((val) => {
+            tbl += `
+                <div class="col-lg-4 mt-3 mb-4">
+                    <div class="card shadow">
+                        <div class="card-img">
+                        <img src="${val.image}" style="height:400px;object-fit:cover" class="card-img-top" />
+                        </div>
+                        <div class="card-body">
+                        <h3 class="card-title">${val.name}</h3>
+                        <h5 class="card-title my-3">${val.price} ₹</h5>
+                        <a href="#" class="btn fs-4 btn-primary">Order</a>
+                        </div>
+                    </div>
+                </div>
+            `
+        })
+
+        document.getElementById('allrecord').innerHTML = tbl;
+    }
+
+    function chocolateData() {
+        let category = "chocolate";
+        let tbl = "";
+        data.map((val) => {
+            if (val.category == category) {
+                tbl += `
+                    <div class="col-lg-4 mt-3 mb-4">
+                        <div class="card shadow">
+                            <div class="card-img">
+                        <img src="${val.image}" style="height:400px;object-fit:cover" class="card-img-top" />
+                        </div>
+                            <div class="card-body">
+                            <h3 class="card-title">${val.name}</h3>
+                            <h5 class="card-title my-3">${val.price} ₹</h5>
+                            <a href="#" class="btn fs-4 btn-primary">Order</a>
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+        })
+
+        document.getElementById('allrecord').innerHTML = tbl;
+    }
+
+    function icecreamData() {
+        let category = "icecream";
+        let tbl = "";
+        data.map((val) => {
+
+            if (val.category == category) {
+                tbl += `
+                    <div class="col-lg-4 mt-3 mb-4">
+                        <div class="card shadow">
+                            <div class="card-img">
+                        <img src="${val.image}" style="height:400px;object-fit:cover" class="card-img-top" />
+                        </div>
+                            <div class="card-body">
+                            <h3 class="card-title">${val.name}</h3>
+                            <h5 class="card-title my-3">${val.price} ₹</h5>
+                            <a href="#" class="btn fs-4 btn-primary">Order</a>
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+
+        })
+        document.getElementById('allrecord').innerHTML = tbl;
+    }
+
+    function birthdayData() {
+        let category = "birthday";
+        let tbl = "";
+        data.map((val) => {
+
+            if (val.category == category) {
+                tbl += `
+                <div class="col-lg-4 mt-3 mb-4">
+                        <div class="card shadow">
+                            <div class="card-img">
+                        <img src="${val.image}" style="height:400px;object-fit:cover" class="card-img-top" />
+                        </div>
+                            <div class="card-body">
+                            <h3 class="card-title">${val.name}</h3>
+                            <h5 class="card-title my-3">${val.price} ₹</h5>
+                            <a href="#" class="btn fs-4 btn-primary">Order</a>
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+
+        })
+        document.getElementById('allrecord').innerHTML = tbl;
+    }
+
+    function weddingData() {
+        let category = "wedding";
+        let tbl = "";
+        data.map((val) => {
+
+            if (val.category == category) {
+                tbl += `
+                <div class="col-lg-4 mt-3 mb-4">
+                        <div class="card shadow">
+                            <div class="card-img">
+                        <img src="${val.image}" style="height:400px;object-fit:cover" class="card-img-top" />
+                        </div>
+                            <div class="card-body">
+                            <h3 class="card-title">${val.name}</h3>
+                            <h5 class="card-title my-3">${val.price} ₹</h5>
+                            <a href="#" class="btn fs-4 btn-primary">Order</a>
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+
+        })
+        document.getElementById('allrecord').innerHTML = tbl;
+    }
+
+
+
+</script>
